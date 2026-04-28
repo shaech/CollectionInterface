@@ -64,6 +64,7 @@ Internally, ArrayList is implemented as an array of Object References.  Basicall
 
     To reduce overhead, we can give capacity while declaring ArrayList.
 
+    Time Complexity of ArrayList: O(n)
 
 2. LinkedList
 3. Vector
