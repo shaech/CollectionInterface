@@ -1,1 +1,72 @@
 Collections Interface.
+
+Iterable interface
+-  java.lang package
+-  Extended by Collections.
+-  Gives all collections access to for-each loop
+
+
+Collection Interface
+- java.util package
+- Basically an object that represents group of objects called elements.
+
+Collection Framework
+- Provides a set of interfaces and classes that help manage group of objects aka collections
+
+Collection : Root of all other collection types.
+List: Ordered collection, Contains Duplicates
+Set: UnOrdered, No Duplicates
+Queue: Collection designed to hold elements prior to processing. FIFO structure.
+Deque (Pronounced as deck): Double ended queue - allows insertion and removal from both ends
+Map: Interface that represents collection of key-value pairs.
+
+
+A. List interface:
+
+- List.java => java.util package.
+   List extends SequencedCollection which extends Collection interface
+   PRESERVES ORDER OF INCOMING ELEMENTS
+   INDEX-BASED ACCESS
+   ALLOWS DUPLICATES
+
+
+1. ArrayList
+
+  - Resizable array implementation of list interface
+  - ArrayList size change  = dynamic resizing
+
+Differences:
+Feature	    Array	            ArrayList
+Type	    Built-in	        Class (java.util) - object so no operator overloading
+Access	    arr[i]	            list.get(i)
+Size	    Fixed	            Dynamic
+Performance	Slightly_ faster	Slight overhead
+
+Internal Working
+
+Internally, ArrayList is implemented as an array of Object References.  Basically, its an array of objects.
+
+    Size vs Capacity :
+
+    An array when created, its size has null elements but default capacity is generally 10.
+    When this gets full, array resizes by copying elements to new array.
+
+    When we add an element to ArrayList, it :
+    - Checks Capacity
+    - Resize if necessary ( usually larger is 1.5 times current capacity)
+    - add the element  - copied into new array O(n)
+
+    When removing elements, it:
+    - Checks bounds (index in valid range)
+    - Remove elements (once element is removed, all elements to right of removed element are shifted one position to left to fill gap.)
+         [2,24,34,45,66]   Remove 34    [2, 24,45,66]
+    - Reduce size : decremented by 1
+
+    To reduce overhead, we can give capacity while declaring ArrayList.
+
+
+2. LinkedList
+3. Vector
+4. Stack
+5. CopyOnWriteArrayList
+
