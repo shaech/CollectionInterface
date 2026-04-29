@@ -12,7 +12,14 @@ public class Main {
         System.out.println("Hello my World");
 
         A_ArrayList_Basics aArrayListBasics = new A_ArrayList_Basics();
-        aArrayListBasics.createArrayList();
+//        aArrayListBasics.createArrayList();
+        B_Comparator bComp = new B_Comparator();
+        //bComp.compp();
 
+        C_LinkedList cll = new C_LinkedList();
+        //cll.linkk();
+
+        D_Vector dv = new D_Vector();
+        dv.vectorDemo();
     }
 }

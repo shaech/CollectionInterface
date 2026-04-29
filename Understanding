@@ -67,7 +67,21 @@ Internally, ArrayList is implemented as an array of Object References.  Basicall
     Time Complexity of ArrayList: O(n)
 
 2. LinkedList
+    -> Java implementation has doubly linked list
+    -> Methods are as per the class C_LinkedList which has LinkedList implementation of List
+
+
 3. Vector
+    -> Legacy class. Came in Java 1
+    -> When collections came, vector was added in collections.
+    -> Behaves as dynamic array and grows as needed.
+    -> When array is full, a new array with double size is created and elements from prev array are copied. this can increase overhead.
+    -> Main use: Thread Safety in Synchronized env... multithreaded systems.\
+    -> Can give capacity. And capacity to increase as well during declaration..
+    -> Single threaded env- not recommended as has overhead due to Synchronized.
+    -> Multi threaded env - better. but modern implementations have ConcurrentHashMap or CopyOnWriteArrayList
+    -> Vectors preferred when thread safety is priority.
+
 4. Stack
 5. CopyOnWriteArrayList
 
