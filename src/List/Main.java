@@ -20,6 +20,9 @@ public class Main {
         //cll.linkk();
 
         D_Vector dv = new D_Vector();
-        dv.vectorDemo();
+        //dv.vectorDemo();
+        
+        E_Stack es = new E_Stack();
+        es.stackDemo();
     }
 }

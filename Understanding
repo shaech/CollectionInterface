@@ -83,5 +83,22 @@ Internally, ArrayList is implemented as an array of Object References.  Basicall
     -> Vectors preferred when thread safety is priority.
 
 4. Stack
+  -> Stack = subclass of Vector. Extended by Vector.
+    So can have all properties of vector like Stack is synchronized, Dynamic array but constrained by Stack's LIFO structure.
+  -> LIFO = Last In First Out structure
+  -> Add- push
+  -> Last Element - top of stack to removed - pop
+  -> To check top element - peek
+  -> isEmpty, size,    search at specific index FROM TOP (SEARCH in stack is index from TOP-index)
+  -> (IMP) Also, since it is extended by vector, we can also add or remove an element from middle. Yes.
+  -> Can use LinkedList as Stack -> addLast, getLast
+  -> So stack can be implemented with help of Stack class or LinkedList class
+  -> Although internally stack is also an array so we can say we can implement as Array too.
+
+
+
+
+
+
 5. CopyOnWriteArrayList
 
