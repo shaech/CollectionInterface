@@ -96,9 +96,131 @@ Internally, ArrayList is implemented as an array of Object References.  Basicall
   -> Although internally stack is also an array so we can say we can implement as Array too.
 
 
-
-
-
-
 5. CopyOnWriteArrayList
+
+CopyON Write => when write operation is done, like adding or removing an element,
+    instead of modifying the existing list,
+    a new copy of that list is created and modifications are applied to that copy.
+    This ensures that other threads who are reading the list
+    while the modification is happening will stay unaffected.
+ Here, Read ops => fast and direct  => as its happening on a stable list without interference from modifications.
+
+ Write ops => A new list is created for every modification.
+ Reference of this list is then updated so subsequent(next) reads can read from modified copy.
+
+ //USED WHEN READ INTENSIVE OPERATIONS ARE THERE
+
+
+ ********************************
+
+MAP: It is not a part of collection interface framework but it implements Collection Framework.
+
+Hash:
+    HASHMAP:  LinkedHashMap | WeakHashMap | IdentityHashMap
+
+        HashMap ->
+         1. Key-Value Pairs: Each entry in Map consists of key and value.
+         2. Unique Keys: No 2 entries can have same - duplicate keys. Values same allowed. If you add same key, prev key will be replaced.
+         3. One value per key: Each key maps to single value.
+         4. Order: Some implementations maintain
+                        Insertion Order: LinkedHashMap implementation of map interface
+                        Natural Order: TreeMap implementation
+                        No order: HashMap implementation
+         5. Not threadsafe. requires external synchronization in multi threaded concept
+         6. Performance: o(1) for basic ops like get and put provided hasfunction disperses  elements properly.
+
+     _________________________________
+         Internal Working of HashMap
+     _________________________________
+
+     4 components => key, value, hash fn, buckets
+        Key: Identifier used to retrieve value
+        Value: Data associated with key
+        Bucket: Hashmap internally has an array or linkedlist(after java 8 -  chnged to Red-Black tree if too many collisions.) here key value pairs are stored. Think of buckets as cells in a list(array).
+        Hash Function: Converts a key into index (bucket location) for storage.
+
+     Basically lets imaging hash as a functn. if we give key, it will give an index based on algorithms. the value will be stored there.
+     Input key -> Hash Function -> Output = HashCode = Returns a fixed string of bytes..typically numerical value.
+
+     Primary purpose of Hash code =  Map data of arbitrary size to data of fixed size.
+         Features of hash code:
+                    1. Deterministic: Same input will always produce same output.
+                    2. Fixed Output Size: Regardless of input size, hashcode has a consistent size (32 bit, 64 bit)
+                    3. Efficient Computation: The hash function should compute the hash quickly.
+
+           Key
+            ↓
+           hashCode()
+            ↓
+           bucket index calculation
+            ↓
+           direct array slot
+            ↓
+           insert/search there
+
+Step 1: Hashing the key = Key passed through hash function => generate unique hash code (an integer number)=>
+         => This hash code helps determine where key-value pair will be stored in array. (called bucket array)
+
+Step 2: Calculating the index = Hash code is used to then calculate an index in array (bucket location) using:
+              int index = hashcode % arraySize;
+        The index decides which bucket will hold key-value pair.
+        For eg: if arr size is 16, key's hashcode will be divided by 16, and remainder will be index.
+
+Step 3: The key-value pair is stored in the bucket at the calculated index.  Each index can hold multiple key-value pairs.
+
+
+  How hashmap retrieves data: get(key)
+    1. Hashing the key: Similar to insertion, key is hashed using same hash fn to calculate hashcode
+    2. Finding hashcode: The hashcode is used to find the index of bucket where key-value pair is stored.
+    3. Searching in bucket: Once correct bucket is found, checks for key in that bucket, if it finds key, it returns associated value.
+
+This is an array of linkedlists.
+   In case of collisions, there is a pointer to next linkedlist node.
+      class Node<K,V>
+      {
+      final int hash; //hash code of key
+      final K key;  // key itself
+      V value; // value associated with the key
+      Node<K,V> next;    //pointer to next node in case of collision (linked list)
+     }
+
+Collision: Since diff keys can generate same index (collision), Java's hashMap uses LinkedList (java 8) or Red-Black Balanced Binary Tree(Java 8+)
+When multiple k-v pairs map to same bucket, they are stored in linkedlist inside bucket.
+When k-v pair is retrieved, HashMap traverses linkedlist , checking each key until it finds a match.
+Here worst case complexity can become
+  For LinkedList: o(n)
+  For tree: o(logn)
+
+After certain threshold, linkedlist becomes RB tree. = treefication
+
+RB tree - self balancing binary search tree.
+
+HashMap Rehashing (Resizing):
+
+Default array size = 16
+Threshold (Load Factor) = 0.75 ... so when array size 12 is inserted, HashMap will resize.
+We can give Initial Capacity and Load Factor to an array
+If HashMap will resize automatically based on loadFactor.
+
+
+
+
+
+
+
+    HASHTABLE: Legacy
+
+SortedMap: TreeMap | NavigableMap
+
+ConcurrentMap: ConcurrentHashMap | ConcurrentSkipListMap
+
+
+
+
+
+
+
+
+
+
 
