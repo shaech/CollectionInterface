@@ -1,5 +1,7 @@
 import Hash.HashFunc;
 import Hash.HashMapp;
+import Hash.LRUCache;
+import Hash.LinkedHashMapDemo;
 import List.*;
 
 public class Main {
@@ -11,7 +13,7 @@ public class Main {
         Main m = new Main();
             //m.listDemos();
         m.mapDemos();
-        m.main();
+        //m.main();
 
 
     }
@@ -42,10 +44,18 @@ public class Main {
 
         HashMapp h1 = new HashMapp();
         //h1.hashmapDemo();
+        //h1.marks();
 
         HashFunc hf = new HashFunc();
-        System.out.println("Hash O/p: " + hf.simpleHash("45"));
-        hf.moreLoadFactorTry();
+        //System.out.println("Hash O/p: " + hf.simpleHash("45"));
+        //hf.moreLoadFactorTry();
+
+        LinkedHashMapDemo lmp = new LinkedHashMapDemo();
+        //lmp.linkedMap();
+
+        LRUCache<String,Integer> l1 = new LRUCache<>(3);
+        //l1.lruCacheDemo();
+
     }
 
     public void main(){

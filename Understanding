@@ -203,9 +203,68 @@ We can give Initial Capacity and Load Factor to an array
 If HashMap will resize automatically based on loadFactor.
 
 
+HashMapp.java->
+in linkedlist, it traverses and checks whether kep is grape using equals() method.
+       so there are 2 main methods-  hashCode() and equals()
+
+     REQUIRED TO OVERRIDE hashCode() AND equals() METHODS IN CUSTOM CLASSES AS EXPLAINED IN Studentt.java.
+     OR ELSE SAME ENTITIES WILL HAVE TWI VALES INSTEAD OF GETTING REPLACED.
+
+Time complexities
+for operation get(key), put(key,value) and remove(key) and containsKey(key)
+has Average case O(1) and worst case O(logn)  as we have direct bucket access
+and RB tree searching gives logn in case of collisions.
+
+containsValue(value) is diff cz entries need to be traversed in linear search. - avg and worst case - O(n)
+
+size() and isEmpty() returns number of kv pairs and maintained a s separate field so constant -avg and worst case- O(1)
+
+HashMap structure:
+class HashMap<K,V> {
+    Node<K,V>[] table;   // buckets
+    int size;            // number of key-value pairs
+}
+
+It internally stores following things in heap memory,
+HashMap Object
+-------------------------
+table  -----> bucket array
+size   = 5
+threshold = 12
+loadFactor = 0.75
+-------------------------
+
+when put or remove is done, size++ and size-- happens.
 
 
 
+//********************
+
+LinkedHashMap
+=> Mainly used to MAINTAIN ORDER OF HASHMAP
+=> check LinkedHashMapDemo... I have added loadFactor.
+   In hashmap order is changed. but in linked hashmap order is not changed.
+=> It is NOT thread-safe.
+
+
+LinkedHashMap has doubled linked list which has all entries inside it in the same order as its insertion.
+LinkedHashMap uses this. So, in comparison to HashMap, Linked HashMap becomes slow. But time complexity is O(1)
+and space too is taken more.
+
+access order true false to see if values are in insertion order.. ctrl+ b => go to definition of LinkedHashMap to check.
+this will work with get()  or getOrDefault().
+ so if accessOrder is TRUE,  THE ONE THAT IS ACCESSED WILL MOVE TO THE END OF LIST
+This is called LRU algo = Least Recently Used Element.
+USECASE - Caching - remove least recently used element.(that will be the one at top)
+
+
+//**********************
+
+WEAKHashMap
+
+
+
+//**********************
 
 
     HASHTABLE: Legacy
